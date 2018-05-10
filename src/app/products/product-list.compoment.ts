@@ -22,6 +22,19 @@ export class ProductListComponent{
             "name": "Naleśniki",
             "price": 15
         }
-    ]
+    ];
+    AddRow() : void{
+        this.sampleArray.push(
+            {
+                "id": 3,
+                "name": "Naleśniki",
+                "price": 15
+            }
+        )
+    };
+    RemoveRow() : void 
+    {
+        this.sampleArray.pop();
+    };
     price: number = 1000;
 }
