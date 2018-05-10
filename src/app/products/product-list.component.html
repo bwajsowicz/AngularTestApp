@@ -3,14 +3,14 @@
         <tr>
             <th>#</th>
             <th>Produkty</th>
-            <th>Ilość</th>
+            <th>Cena</th>
         </tr>
     </thead>
     <tbody class="tbody-light" *ngFor="let product of sampleArray">
         <tr>
             <td scope="row">{{product.id}}</td>
             <td class="table-success">{{product.name}}</td>
-            <td>{{product.price}}</td>
+            <td>{{product.price | currency}}</td>
         </tr>
     </tbody>
 </table>
