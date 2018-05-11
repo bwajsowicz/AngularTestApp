@@ -9,7 +9,16 @@ import { IProduct } from "./product";
 export class ProductListComponent implements OnInit{
     pageTitle: string = "Page Title";
     price: number = 1000;
-    sampleArray: IProduct[] = [
+    _filter: string;
+    get filter() : string {
+        return this._filter;
+    }
+    set filter(value: string) {
+        this._filter = value;
+        this.filteredProducts = this.filter ? this.PerformFilter(this.filter) : this.products;
+    }
+    filteredProducts: IProduct[];
+    products: IProduct[] = [
         {
             "id": 1,
             "name": "Mięso",
@@ -27,7 +36,7 @@ export class ProductListComponent implements OnInit{
         }
     ];
     AddRow() : void{
-        this.sampleArray.push(
+        this.products.push(
             {
                 "id": 3,
                 "name": "Naleśniki",
@@ -35,11 +44,20 @@ export class ProductListComponent implements OnInit{
             }
         )
     };
+    constructor() {
+        this.filteredProducts = this.products;
+        this.filter = 'Naleśniki';
+    }
     RemoveRow() : void 
     {
-        this.sampleArray.pop();
+        this.products.pop();
     };
     ngOnInit() : void {
         console.log("OnInit awakens. ~~P O S E~~ ")
+    }
+    PerformFilter(filterBy: string): IProduct[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter((product: IProduct) =>
+            product.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
 }
