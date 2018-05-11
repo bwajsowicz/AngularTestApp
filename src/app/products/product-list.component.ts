@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
+import { ICustomer } from "../sandbox/customer";
+import { CustomerService } from "../sandbox/customer.service";
 
 @Component({
     selector: 'pm-products',
@@ -20,6 +22,7 @@ export class ProductListComponent implements OnInit{
     }
     filteredProducts: IProduct[];
     products: IProduct[];
+    customers: ICustomer[];
     AddRow() : void{
         this.products.push(
             {
@@ -30,7 +33,7 @@ export class ProductListComponent implements OnInit{
             }
         )
     };
-    constructor(private _productService: ProductService) {
+    constructor(private _productService: ProductService, private _customerService: CustomerService) {
         this.filter = '';
     }
     RemoveRow() : void 
@@ -40,8 +43,11 @@ export class ProductListComponent implements OnInit{
     ngOnInit() : void {
         console.log("OnInit awakens. ~~P O S E~~ ");
         this.products = this._productService.getProducts();
-        this.filteredProducts = this.products;
-    }
+        this._customerService.getCustomers().subscribe(customers => {
+            this.customers = customers;
+            this.filteredProducts = this.products;
+        });
+    };
     PerformFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
         return this.products.filter((product: IProduct) =>
