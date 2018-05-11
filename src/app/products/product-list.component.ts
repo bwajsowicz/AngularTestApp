@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 
 @Component({
@@ -6,8 +6,9 @@ import { IProduct } from "./product";
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent{
+export class ProductListComponent implements OnInit{
     pageTitle: string = "Page Title";
+    price: number = 1000;
     sampleArray: IProduct[] = [
         {
             "id": 1,
@@ -38,5 +39,7 @@ export class ProductListComponent{
     {
         this.sampleArray.pop();
     };
-    price: number = 1000;
+    ngOnInit() : void {
+        console.log("OnInit awakens. ~~P O S E~~ ")
+    }
 }
