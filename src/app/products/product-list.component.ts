@@ -22,17 +22,21 @@ export class ProductListComponent implements OnInit{
         {
             "id": 1,
             "name": "Mięso",
-            "price": 15
+            "price": 15,
+            "availability": 1
         },
         {
             "id": 2,
             "name": "Jajka",
-            "price": 9
+            "price": 9,
+            "availability": 3
+            
         },
         {
             "id": 3,
             "name": "Naleśniki",
-            "price": 15
+            "price": 15,
+            "availability": 2           
         }
     ];
     AddRow() : void{
@@ -40,13 +44,14 @@ export class ProductListComponent implements OnInit{
             {
                 "id": 3,
                 "name": "Naleśniki",
-                "price": 15
+                "price": 15,
+                "availability": 2            
             }
         )
     };
     constructor() {
         this.filteredProducts = this.products;
-        this.filter = 'Naleśniki';
+        this.filter = '';
     }
     RemoveRow() : void 
     {
