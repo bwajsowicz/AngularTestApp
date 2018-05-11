@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
+import { ProductService } from "./product.service";
 
 @Component({
     selector: 'pm-products',
@@ -18,27 +19,7 @@ export class ProductListComponent implements OnInit{
         this.filteredProducts = this.filter ? this.PerformFilter(this.filter) : this.products;
     }
     filteredProducts: IProduct[];
-    products: IProduct[] = [
-        {
-            "id": 1,
-            "name": "Mięso",
-            "price": 15,
-            "availability": 1
-        },
-        {
-            "id": 2,
-            "name": "Jajka",
-            "price": 9,
-            "availability": 3
-            
-        },
-        {
-            "id": 3,
-            "name": "Naleśniki",
-            "price": 15,
-            "availability": 2           
-        }
-    ];
+    products: IProduct[];
     AddRow() : void{
         this.products.push(
             {
@@ -49,8 +30,7 @@ export class ProductListComponent implements OnInit{
             }
         )
     };
-    constructor() {
-        this.filteredProducts = this.products;
+    constructor(private _productService: ProductService) {
         this.filter = '';
     }
     RemoveRow() : void 
@@ -58,7 +38,9 @@ export class ProductListComponent implements OnInit{
         this.products.pop();
     };
     ngOnInit() : void {
-        console.log("OnInit awakens. ~~P O S E~~ ")
+        console.log("OnInit awakens. ~~P O S E~~ ");
+        this.products = this._productService.getProducts();
+        this.filteredProducts = this.products;
     }
     PerformFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
