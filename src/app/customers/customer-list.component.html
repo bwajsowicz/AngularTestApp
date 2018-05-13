@@ -1,0 +1,24 @@
+<div class="container">
+<table class="table table-striped table-hover" style="margin-top: 10px">
+  <thead>
+      <tr>
+          <th>Login</th>
+          <th>FirstName</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>CreatedAt</th>
+      </tr>
+  </thead>
+  <tbody class="tbody-light" *ngFor="let customer of customers">
+      <tr>
+          <td scope="row">{{customer.login}}</td>
+          <td>{{customer.firstName}}</td>
+          <td>{{customer.lastName}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.createdAt}}</td>
+      </tr>
+  </tbody>
+</table>
+</div>

@@ -1,1 +1,12 @@
-<pm-products></pm-products>
+<ul class="nav navbar-light bg-light">
+    <li class="nav-item">
+        <a class="nav-link active" [routerLink]="['/welcome']">Strona główna</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/products']">Produkty</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/customers']" href="#">Klienci</a>
+    </li>
+</ul>
+<router-outlet></router-outlet>

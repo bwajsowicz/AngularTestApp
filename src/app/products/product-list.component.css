@@ -2,3 +2,13 @@ thead {
     text-transform: uppercase;
     font-size: 1.0420rem;
 }
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+.example-full-width {
+    width: 100%;
+}

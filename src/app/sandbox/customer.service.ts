@@ -1,7 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ICustomer } from "./customer";
-import { Observable } from "rxjs/Observable";
+import { Observable, throwError } from "rxjs"
+import { tap, catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()
 export class CustomerService {
@@ -11,5 +13,9 @@ export class CustomerService {
 
     getCustomers(): Observable<ICustomer[]>  {
         return this._http.get<ICustomer[]>(this._customerUrl);
+    }
+
+    private handleError(err: HttpErrorResponse)
+    {
     }
 }

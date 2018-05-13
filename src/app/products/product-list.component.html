@@ -1,4 +1,5 @@
-<table class="table table-striped table-hover">
+<div class="container">    
+<table class="table table-striped table-hover" style="margin-top: 10px">
     <thead  *ngIf="products && products.length">
         <tr>
             <th>#</th>
@@ -15,29 +16,6 @@
             <td>
                 <pm-availability [availability]="product.availability"></pm-availability>
             </td>
-        </tr>
-    </tbody>
-</table>
-
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Login</th>
-            <th>FirstName</th>
-            <th>Lastname</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>CreatedAt</th>
-        </tr>
-    </thead>
-    <tbody class="tbody-light" *ngFor="let customer of customers">
-        <tr>
-            <td scope="row">{{customer.login}}</td>
-            <td>{{customer.firstName}}</td>
-            <td>{{customer.lastName}}</td>
-            <td>{{customer.email}}</td>
-            <td>{{customer.phone}}</td>
-            <td>{{customer.createdAt}}</td>
         </tr>
     </tbody>
 </table>
@@ -67,3 +45,29 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xl" align="center">
+      </div>
+      <div class="col-xl-4" align="center">
+            <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Podaj swój login" value="Login">
+                  </mat-form-field>
+      </div>
+      <div class="col-xl" align="center">
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col" align="center">
+      </div>
+      <div class="col-4" align="center">
+            <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Podaj swoje hasło" value="Hasło">
+                  </mat-form-field>
+      </div>
+      <div class="col" align="center">
+      </div>
+    </div>
+  </div>
+</div>

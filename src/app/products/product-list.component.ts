@@ -22,7 +22,6 @@ export class ProductListComponent implements OnInit{
     }
     filteredProducts: IProduct[];
     products: IProduct[];
-    customers: ICustomer[];
     AddRow() : void{
         this.products.push(
             {
@@ -33,7 +32,7 @@ export class ProductListComponent implements OnInit{
             }
         )
     };
-    constructor(private _productService: ProductService, private _customerService: CustomerService) {
+    constructor(private _productService: ProductService) {
         this.filter = '';
     }
     RemoveRow() : void 
@@ -43,10 +42,7 @@ export class ProductListComponent implements OnInit{
     ngOnInit() : void {
         console.log("OnInit awakens. ~~P O S E~~ ");
         this.products = this._productService.getProducts();
-        this._customerService.getCustomers().subscribe(customers => {
-            this.customers = customers;
-            this.filteredProducts = this.products;
-        });
+        this.filteredProducts = this.products;
     };
     PerformFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
